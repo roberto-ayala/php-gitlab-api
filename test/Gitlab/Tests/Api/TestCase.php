@@ -20,7 +20,7 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
      */
     protected function getHttpMock()
     {
-        return $this->getMock('Gitlab\HttpClient\HttpClient', array(), array(null, array(), $this->getHttpClientMock()));
+        return $this->createMock('Gitlab\HttpClient\HttpClient', array(), array(null, array(), $this->getHttpClientMock()));
     }
 
     /**
@@ -28,7 +28,7 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
      */
     protected function getHttpClientMock()
     {
-        $httpClient = $this->getMock('Buzz\Client\Curl', array('send'));
+        $httpClient = $this->createMock('Buzz\Client\Curl', array('send'));
         $httpClient
             ->expects($this->any())
             ->method('send');
